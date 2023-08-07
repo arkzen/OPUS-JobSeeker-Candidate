@@ -8,4 +8,6 @@
     <color name="gray">#8E9AA6</color>
     <color name="whiteshade1">#E8EDF2</color>
     <color name="greenshade1">#E7EFF1</color>
+    <color name="mineshaft">#373030</color>
+    <color name="shark">#24282D</color>
 </resources>
