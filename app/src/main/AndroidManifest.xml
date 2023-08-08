@@ -13,6 +13,12 @@
         android:theme="@style/Theme.OPUS"
         tools:targetApi="31">
         <activity
+            android:name=".view.ui.activity.Homepage"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.activity.Authentication"
+            android:exported="false" />
+        <activity
             android:name=".view.ui.MainActivity"
             android:exported="true">
             <intent-filter>
