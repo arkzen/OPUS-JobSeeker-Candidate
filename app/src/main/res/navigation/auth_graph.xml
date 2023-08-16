@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="bd.ewn.opus.view.ui.fragment.auth.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_RPgetOTPFragment"
+            app:destination="@id/RPgetOTPFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerSkillFragment"
+            app:destination="@id/registerSkillFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/RPgetOTPFragment"
+        android:name="bd.ewn.opus.view.ui.fragment.auth.RPgetOTPFragment"
+        android:label="fragment_r_pget_o_t_p"
+        tools:layout="@layout/fragment_r_pget_o_t_p" >
+        <action
+            android:id="@+id/action_RPgetOTPFragment_to_RPsubmitOTPFragment"
+            app:destination="@id/RPsubmitOTPFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/RPsubmitOTPFragment"
+        android:name="bd.ewn.opus.view.ui.fragment.auth.RPsubmitOTPFragment"
+        android:label="fragment_r_psubmit_o_t_p"
+        tools:layout="@layout/fragment_r_psubmit_o_t_p" >
+        <action
+            android:id="@+id/action_RPsubmitOTPFragment_to_resetPassFragment"
+            app:destination="@id/resetPassFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPassFragment"
+        android:name="bd.ewn.opus.view.ui.fragment.auth.ResetPassFragment"
+        android:label="fragment_reset_pass"
+        tools:layout="@layout/fragment_reset_pass" />
+    <fragment
+        android:id="@+id/registerSkillFragment"
+        android:name="bd.ewn.opus.view.ui.fragment.auth.RegisterSkillFragment"
+        android:label="fragment_register_skill"
+        tools:layout="@layout/fragment_register_skill" >
+        <action
+            android:id="@+id/action_registerSkillFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="bd.ewn.opus.view.ui.fragment.auth.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+</navigation>
