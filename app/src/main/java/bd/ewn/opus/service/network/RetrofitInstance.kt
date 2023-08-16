@@ -16,7 +16,6 @@ class RetrofitInstance {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
             } catch (e: Exception) {
-                // Handle any exceptions here, you can print an error message or log it
                 e.printStackTrace()
             }
         }

@@ -26,7 +26,7 @@ class SplashFragment : Fragment() {
 
         // Delayed navigation logic
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = if (state == true) {
+            /*val intent = if (state == true) {
                 Intent(requireContext(), Homepage::class.java)
             } else {
                 Navigation.findNavController(view).navigate(R.id.loginFragment)
@@ -36,18 +36,11 @@ class SplashFragment : Fragment() {
             intent?.let {
                 startActivity(intent)
                 requireActivity().finish()
-            }
+            }*/
+            Navigation.findNavController(view).navigate(R.id.loginFragment)
+
         }, 3000) // 3000 milliseconds = 3 seconds delay
     }
 
-    companion object {
 
-        @JvmStatic
-        fun newInstance() =
-            SplashFragment().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
     }
-}
