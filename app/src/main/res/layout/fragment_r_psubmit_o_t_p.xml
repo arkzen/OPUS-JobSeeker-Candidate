@@ -1,14 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.ui.fragment.auth.RPsubmitOTPFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnEnterOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_padding20"
+        android:paddingStart="@dimen/margin_padding16"
+        android:src="@drawable/arrow_back_fil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding8"
+        android:layout_marginTop="@dimen/margin_padding20"
+        android:text="@string/submit_otp"
+        style="@style/TextStyleMedium"
+        app:layout_constraintStart_toEndOf="@id/btnEnterOtp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_padding16"
+        android:layout_marginEnd="@dimen/margin_padding16"
+        app:cardCornerRadius="@dimen/margin_padding16"
+        app:layout_constraintBottom_toBottomOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_padding24">
+
+            <TextView
+                android:id="@+id/tvEnterEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_bold"
+                android:text="Enter OTP"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textFontWeight="500"
+                android:textSize="@dimen/font20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvEnterOtpDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_bold"
+                android:text="Enter the OTP that we have sent to your email. Please do not share the code with anyone."
+                android:textAlignment="center"
+                android:textColor="@color/text2"
+                android:textFontWeight="500"
+                android:textSize="@dimen/font12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEnterEmail" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etOtp"
+                android:layout_width="75dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginStart="@dimen/margin_padding2"
+                android:layout_marginEnd="@dimen/margin_padding2"
+                android:hint="-"
+                android:background="@drawable/otp_edit_text"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/etOtp1"
+                app:layout_constraintTop_toBottomOf="@id/tvEnterOtpDetails" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etOtp1"
+                android:layout_width="75dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/margin_padding2"
+                android:layout_marginEnd="@dimen/margin_padding2"
+                android:hint="-"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/otp_edit_text"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textFontWeight="700"
+
+                android:textSize="30sp"
+                app:layout_constraintStart_toEndOf="@id/etOtp"
+                app:layout_constraintEnd_toStartOf="@id/etOtp2"
+                app:layout_constraintTop_toBottomOf="@id/tvEnterOtpDetails" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etOtp2"
+                android:layout_width="75dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/margin_padding2"
+                android:layout_marginEnd="@dimen/margin_padding2"
+                android:hint="-"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/otp_edit_text"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textFontWeight="700"
+                android:textSize="30sp"
+                app:layout_constraintStart_toEndOf="@id/etOtp1"
+                app:layout_constraintEnd_toStartOf="@id/etOtp3"
+                app:layout_constraintTop_toBottomOf="@id/tvEnterOtpDetails" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etOtp3"
+                android:layout_width="75dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/margin_padding2"
+                android:layout_marginEnd="@dimen/margin_padding2"
+                android:hint="-"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/otp_edit_text"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textFontWeight="700"
+                android:textSize="30sp"
+                app:layout_constraintStart_toEndOf="@id/etOtp2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEnterOtpDetails" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/LayoutCardBottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/Btn_submit_OTP"
+                android:layout_width="320dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/margin_padding30"
+                android:background="@drawable/btn_shape_login"
+                android:backgroundTint="@color/blue"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".43" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
