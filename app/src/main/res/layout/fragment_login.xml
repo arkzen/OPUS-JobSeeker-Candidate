@@ -32,7 +32,7 @@
                 android:src="@drawable/fi_globe" />
 
             <ImageView
-                android:id="@+id/Img_btn_languagemenu"
+                android:id="@+id/btnImgLangMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
@@ -222,7 +222,7 @@
                 android:id="@+id/btnPassHideEye"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="@dimen/margin_padding16"
                 android:clickable="true"
                 android:contentDescription="TODO"
                 android:focusable="true"
@@ -262,13 +262,13 @@
             <TextView
                 android:id="@+id/tvBtnForgetPass"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_padding16"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/forgot_password"
                 android:textColor="@color/blue"
-                android:textSize="@dimen/font12"
+                android:textSize="@dimen/font14"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
