@@ -34,5 +34,8 @@
     <string name="submit_otp">Submit OTP</string>
     <string name="create_new_password">Create new password</string>
     <string name="save_changes">Save Changes</string>
+    <string name="your_location">Your Location</string>
+    <string name="gender">Gender</string>
+    <string name="create_account">Create Account</string>
 
 </resources>
