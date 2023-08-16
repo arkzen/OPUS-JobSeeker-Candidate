@@ -32,5 +32,7 @@
     <string name="promote">Promote</string>
     <string name="promote_yourself_enjoy"><![CDATA[Promote yourself & enjoy!]]></string>
     <string name="submit_otp">Submit OTP</string>
+    <string name="create_new_password">Create new password</string>
+    <string name="save_changes">Save Changes</string>
 
 </resources>
