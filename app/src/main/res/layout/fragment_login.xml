@@ -9,7 +9,6 @@
     tools:context=".view.ui.fragment.auth.LoginFragment">
 
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cvAppLang"
         android:layout_width="60dp"
@@ -40,12 +39,6 @@
                 android:layout_marginLeft="3dp"
                 android:src="@drawable/dropdownarrow1" />
 
-            <!--            <androidx.appcompat.widget.AppCompatSpinner-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_marginLeft="3dp"-->
-            <!--                android:entries="@array/language"-->
-            <!--                android:background="@drawable/dropdownarrow1"-->
-            <!--                android:layout_height="wrap_content"/>-->
 
         </LinearLayout>
 
@@ -195,27 +188,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_padding48"
                 android:layout_marginTop="@dimen/margin_padding24"
-
                 android:background="@drawable/edittextstaeselector"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:paddingStart="@dimen/margin_padding24"
                 app:layout_constraintEnd_toEndOf="parent"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvHeadingText" />
 
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edPassword"
+                style="@style/TextStyleHint"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_padding48"
                 android:layout_marginTop="@dimen/margin_padding24"
                 android:background="@drawable/edittextstaeselector"
                 android:hint="@string/hint_qpassword"
-                android:inputType="textEmailAddress"
                 android:paddingStart="@dimen/margin_padding24"
-
-                style="@style/TextStyleHint"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edEmail" />
@@ -237,7 +228,7 @@
                 android:id="@+id/btnPassHideEye1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="@dimen/margin_padding16"
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/ic_baseline_visibility_off"
@@ -269,9 +260,8 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/forgot_password"
+                style="@style/TextStyleMedium14"
                 android:textColor="@color/blue"
-                android:textSize="@dimen/font14"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -375,8 +365,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".75" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
