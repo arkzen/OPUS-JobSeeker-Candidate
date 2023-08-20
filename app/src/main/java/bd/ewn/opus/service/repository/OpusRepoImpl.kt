@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import bd.ewn.opus.service.model.LoginPojo
+import bd.ewn.opus.service.model.PassResetEmailPojo
 import bd.ewn.opus.service.network.ApiServices
 import bd.ewn.opus.service.network.RetrofitInstance
 import bd.ewn.opus.service.network.request.LoginBody
@@ -63,6 +64,13 @@ class OpusRepoImpl private constructor() : OpusRepository {
             Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()
         }
         return mLivedata
+    }
+
+    override fun getOTPbyEmail(
+        context: Context,
+        email: String
+    ): MutableLiveData<PassResetEmailPojo> {
+        TODO("Not yet implemented")
     }
 
     companion object {
