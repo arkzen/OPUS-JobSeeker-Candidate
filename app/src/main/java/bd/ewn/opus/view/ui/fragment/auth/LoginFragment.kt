@@ -36,6 +36,7 @@ class LoginFragment : Fragment(), OnClickListener {
     private fun setOnclicklistener() {
         binding.btnLogin.setOnClickListener(this)
         binding.tvBtnForgetPass.setOnClickListener(this)
+        binding.btnCreateAccount.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -52,6 +53,10 @@ class LoginFragment : Fragment(), OnClickListener {
 
             R.id.tvBtnForgetPass -> {
                 Navigation.findNavController(requireView()).navigate(R.id.RPgetOTPFragment)
+            }
+
+            R.id.btnCreateAccount ->{
+                Navigation.findNavController(requireView()).navigate(R.id.registerSkillFragment)
             }
 
         }
