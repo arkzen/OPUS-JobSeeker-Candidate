@@ -1,93 +1,41 @@
 package bd.ewn.opus.view.ui.fragment.auth
 
-import android.graphics.Color
 import android.os.Bundle
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import bd.ewn.opus.R
 import bd.ewn.opus.databinding.FragmentLoginBinding
+import bd.ewn.opus.viewmodel.LoginViewModel
+
+class LoginFragment : Fragment(), OnClickListener {
 
 
-class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(layoutInflater)
-
-        val password = binding.edPassword
-
-        binding.btnPassHideEye.setOnClickListener {
-            binding.btnPassHideEye.visibility = View.GONE
-            binding.btnPassHideEye1.visibility = View.VISIBLE
-
-
-            password.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-
-
-//            binding.edPassword.setRawInputType()
-        }
-
-        binding.btnPassHideEye1.setOnClickListener {
-            binding.btnPassHideEye.visibility = View.VISIBLE
-            binding.btnPassHideEye1.visibility = View.GONE
-
-            password.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-        }
-
-
-
-
-        binding.cvAppLang.setOnClickListener {
-            changeLanguage()
-        }
-        val view = binding.root
-        return view
-
-
-
-
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    private fun changeLanguage() {
-            binding.cvAppLang.visibility = View.GONE
-            binding.cvLangSelect.visibility = View.VISIBLE
 
-            binding.btnEnglish.setOnClickListener {
-                Toast.makeText(context, " English Selected!", Toast.LENGTH_SHORT).show()
-                binding.btnImgCheckEn.visibility = View.VISIBLE
-                binding.btnImgCheckAr.visibility = View.INVISIBLE
-                binding.btnEnglish.setTextColor(Color.GREEN)
-                binding.btnArabic.setTextColor(Color.GRAY)
-            }
-
-            binding.btnArabic.setOnClickListener {
-                Toast.makeText(context, " Arabic Selected!", Toast.LENGTH_SHORT).show()
-                binding.btnImgCheckEn.visibility = View.INVISIBLE
-                binding.btnImgCheckAr.visibility = View.VISIBLE
-                binding.btnEnglish.setTextColor(Color.GRAY)
-                binding.btnArabic.setTextColor(Color.GREEN)
-            }
-
-            binding.btnArrowSpinner.setOnClickListener {
-                binding.cvLangSelect.visibility = View.GONE
-                binding.cvAppLang.visibility = View.VISIBLE
-            }
-
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setOnclicklistener()
     }
 
+    private fun setOnclicklistener() {
+        binding.btnLogin.setOnClickListener(this)
+    }
 
     companion object {
 
@@ -98,5 +46,55 @@ class LoginFragment : Fragment() {
 
                 }
             }
+    }
+
+    override fun onClick(v: View) {
+
+        when (v.id) {
+            R.id.btnLogin -> {
+                val email = binding.edEmail.text.toString()
+                val pass = binding.edPassword.text.toString()
+
+                if (isValid()) {
+                    loginCheck(email, pass)
+                }
+            }
+
+        }
+    }
+
+    private fun loginCheck(email: String, pass: String) {
+        val loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+
+        loginViewModel.loginResponse(requireContext(), email, pass)
+            .observe(viewLifecycleOwner, Observer { loginPojo ->
+
+                val accessToken = loginPojo.access_token
+                if (accessToken.isNotEmpty()) {
+                    Navigation.findNavController(requireView()).navigate(R.id.homepage)
+                } else Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+            })
+    }
+
+    private fun isValid(): Boolean {
+
+        binding.edEmail.error = null
+        binding.edPassword.error = null
+
+        var isValid = true
+        val email = binding.edEmail.toString()
+        val pass = binding.edPassword.toString()
+
+        if (email.isEmpty()) {
+            isValid = false
+            binding.edEmail.error = "Enter Your Email"
+        }
+
+        if (pass.isEmpty()) {
+            isValid = false
+            binding.edPassword.error = "Enter Your Password"
+        }
+
+        return isValid
     }
 }

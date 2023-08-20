@@ -7,6 +7,7 @@ import bd.ewn.opus.service.model.LoginPojo
 import bd.ewn.opus.service.network.ApiServices
 import bd.ewn.opus.service.network.RetrofitInstance
 import bd.ewn.opus.service.network.request.LoginBody
+import bd.ewn.opus.service.util.SharedPrefDataProvider
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,6 +43,14 @@ class OpusRepoImpl private constructor() : OpusRepository {
                         return
                     }
                     val loginResponse = response.body()
+                    val accesstoken: String = loginResponse!!.access_token
+                    if (accesstoken.isNotEmpty()) {
+                        SharedPrefDataProvider.initialize(context)
+                        SharedPrefDataProvider.setLoginState(true)
+                        SharedPrefDataProvider.setAccessToken(accesstoken)
+                    }
+
+
                     mLivedata.postValue(loginResponse!!)
                 }
 

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registerSkillFragment"
             app:destination="@id/registerSkillFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homepage"
+            app:destination="@id/homepage" />
     </fragment>
     <fragment
         android:id="@+id/RPgetOTPFragment"
@@ -63,4 +66,9 @@
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <activity
+        android:id="@+id/homepage"
+        android:name="bd.ewn.opus.view.ui.activity.Homepage"
+        android:label="activity_homepage"
+        tools:layout="@layout/activity_homepage" />
 </navigation>

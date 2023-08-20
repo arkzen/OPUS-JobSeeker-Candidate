@@ -7,7 +7,7 @@ android {
     namespace 'bd.ewn.opus'
     compileSdk 34
 
-    viewBinding {
+    dataBinding {
         enabled = true
     }
 
