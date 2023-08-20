@@ -35,17 +35,7 @@ class LoginFragment : Fragment(), OnClickListener {
 
     private fun setOnclicklistener() {
         binding.btnLogin.setOnClickListener(this)
-    }
-
-    companion object {
-
-        @JvmStatic
-        fun newInstance() =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
+        binding.tvBtnForgetPass.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -58,6 +48,10 @@ class LoginFragment : Fragment(), OnClickListener {
                 if (isValid()) {
                     loginCheck(email, pass)
                 }
+            }
+
+            R.id.tvBtnForgetPass -> {
+                Navigation.findNavController(requireView()).navigate(R.id.RPgetOTPFragment)
             }
 
         }
