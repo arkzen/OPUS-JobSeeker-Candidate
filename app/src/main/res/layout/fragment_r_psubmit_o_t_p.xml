@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="@dimen/margin_padding24">
+            android:padding="@dimen/margin_padding20">
 
             <TextView
                 android:id="@+id/tvEnterEmail"
@@ -67,80 +67,82 @@
                 android:textColor="@color/text2"
                 android:textFontWeight="500"
                 android:textSize="@dimen/font12"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvEnterEmail" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etOtp"
-                android:layout_width="75dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="36dp"
-                android:layout_marginStart="@dimen/margin_padding2"
-                android:layout_marginEnd="@dimen/margin_padding2"
-                android:hint="-"
-                android:background="@drawable/otp_edit_text"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-
-                android:textSize="30sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/etOtp1"
-                app:layout_constraintTop_toBottomOf="@id/tvEnterOtpDetails" />
+            <LinearLayout
+                app:layout_constraintTop_toBottomOf="@id/tvEnterOtpDetails"
+                android:id="@+id/otpContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding20"
+                android:orientation="horizontal"
+                android:weightSum="4">
 
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etOtp1"
-                android:layout_width="75dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="@dimen/margin_padding2"
-                android:layout_marginEnd="@dimen/margin_padding2"
-                android:hint="-"
-                android:layout_marginTop="36dp"
-                android:background="@drawable/otp_edit_text"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textFontWeight="700"
 
-                android:textSize="30sp"
-                app:layout_constraintStart_toEndOf="@id/etOtp"
-                app:layout_constraintEnd_toStartOf="@id/etOtp2"
-                app:layout_constraintTop_toBottomOf="@id/tvEnterOtpDetails" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etOtp"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:hint="-"
+                    android:maxLength="1"
+                    android:background="@drawable/otp_edit_text"
+                    android:textAlignment="center"
+                    style="@style/TextStyleHint"
+                    android:inputType="number"
+                    />
 
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etOtp2"
-                android:layout_width="75dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="@dimen/margin_padding2"
-                android:layout_marginEnd="@dimen/margin_padding2"
-                android:hint="-"
-                android:layout_marginTop="36dp"
-                android:background="@drawable/otp_edit_text"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textFontWeight="700"
-                android:textSize="30sp"
-                app:layout_constraintStart_toEndOf="@id/etOtp1"
-                app:layout_constraintEnd_toStartOf="@id/etOtp3"
-                app:layout_constraintTop_toBottomOf="@id/tvEnterOtpDetails" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etOtp1"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:hint="-"
+                    android:maxLength="1"
+                    android:background="@drawable/otp_edit_text"
+                    android:textAlignment="center"
+                    style="@style/TextStyleHint"
+                    android:inputType="number" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etOtp3"
-                android:layout_width="75dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="@dimen/margin_padding2"
-                android:layout_marginEnd="@dimen/margin_padding2"
-                android:hint="-"
-                android:layout_marginTop="36dp"
-                android:background="@drawable/otp_edit_text"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textFontWeight="700"
-                android:textSize="30sp"
-                app:layout_constraintStart_toEndOf="@id/etOtp2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvEnterOtpDetails" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etOtp2"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:hint="-"
+                    android:maxLength="1"
+                    android:background="@drawable/otp_edit_text"
+                    android:textAlignment="center"
+                    style="@style/TextStyleHint"
+                    android:inputType="number" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etOtp3"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:hint="-"
+                    android:maxLength="1"
+                    android:background="@drawable/otp_edit_text"
+                    android:textAlignment="center"
+                    style="@style/TextStyleHint"
+                    android:inputType="number" />
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -192,3 +194,10 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
