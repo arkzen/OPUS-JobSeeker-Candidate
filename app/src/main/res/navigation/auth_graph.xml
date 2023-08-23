@@ -42,7 +42,11 @@
         android:id="@+id/resetPassFragment"
         android:name="bd.ewn.opus.view.ui.fragment.auth.ResetPassFragment"
         android:label="fragment_reset_pass"
-        tools:layout="@layout/fragment_reset_pass" />
+        tools:layout="@layout/fragment_reset_pass" >
+        <action
+            android:id="@+id/action_resetPassFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerSkillFragment"
         android:name="bd.ewn.opus.view.ui.fragment.auth.RegisterSkillFragment"
@@ -61,7 +65,14 @@
         android:id="@+id/registerFragment"
         android:name="bd.ewn.opus.view.ui.fragment.auth.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_registerSkillFragment"
+            app:destination="@id/registerSkillFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="bd.ewn.opus.view.ui.fragment.auth.SplashFragment"
