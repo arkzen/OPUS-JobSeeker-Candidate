@@ -39,6 +39,10 @@
         <item name="fontFamily">@font/outfit_bold</item>
     </style>
 
+    <style name="RadioButtonNoBackground" parent="@style/Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:background">@null</item>
+    </style>
+
 
 
 </resources>

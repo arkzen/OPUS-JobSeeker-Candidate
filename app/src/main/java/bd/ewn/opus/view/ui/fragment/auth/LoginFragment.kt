@@ -59,6 +59,7 @@ class LoginFragment : Fragment(), OnClickListener {
                 Navigation.findNavController(requireView()).navigate(R.id.registerSkillFragment)
             }
 
+
         }
     }
 

@@ -1,110 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg"
-    tools:context=".view.ui.fragment.auth.RegisterSkillFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
+    </data>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.07"/>
-
-    <LinearLayout
-        android:id="@+id/headertop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_padding20"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/gl_top">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_back" />
-
-        <TextView
-            android:id="@+id/txtProducts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="@dimen/margin_padding16"
-            android:fontFamily="@font/outfit_medium"
-            android:text="Select Your Skill"
-            android:textColor="@color/shark"
-            android:textSize="@dimen/font16" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/skill"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/lauout_bg_white"
-        android:layout_marginStart="@dimen/margin_padding10"
-        android:layout_marginEnd="@dimen/margin_padding10"
-        android:layout_marginBottom="@dimen/margin_padding20"
-        android:layout_marginTop="@dimen/margin_padding20"
-        app:layout_constraintTop_toBottomOf="@id/headertop">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.87"/>
-
-    <View
-        android:id="@+id/skillbottom"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/mercury"
-        app:layout_constraintBottom_toTopOf="@id/bottom" />
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bottom"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/gl_bottom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        tools:context=".view.ui.fragment.auth.RegisterSkillFragment">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnNext"
-           app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="Next"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/blue"
-            android:background="@drawable/btn_bg_blue"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.07" />
+
+        <LinearLayout
+            android:id="@+id/headertop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding30"
-            android:layout_marginEnd="@dimen/margin_padding30"/>
+            android:layout_marginStart="@dimen/margin_padding20"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gl_top">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/txtProducts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_padding16"
+                android:fontFamily="@font/outfit_medium"
+                android:text="Select Your Skill"
+                android:textColor="@color/shark"
+                android:textSize="@dimen/font16" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/skill"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/lauout_bg_white"
+            android:layout_marginStart="@dimen/margin_padding10"
+            android:layout_marginEnd="@dimen/margin_padding10"
+            android:layout_marginBottom="@dimen/margin_padding20"
+            android:layout_marginTop="@dimen/margin_padding20"
+            app:layout_constraintTop_toBottomOf="@id/headertop">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSkill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.87" />
+
+        <View
+            android:id="@+id/skillbottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/mercury"
+            app:layout_constraintBottom_toTopOf="@id/bottom" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/gl_bottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnNext"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="Next"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/blue"
+                android:background="@drawable/btn_bg_blue"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding30"
+                android:layout_marginEnd="@dimen/margin_padding30" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
