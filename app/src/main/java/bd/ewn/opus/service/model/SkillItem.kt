@@ -1,3 +1,9 @@
 package bd.ewn.opus.service.model
 
-data class SkillItem (val skillId:Int,val selectedStars:Int)
+
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class SkillItem(val skillId: Int, val skillLevel: Int):Parcelable
+

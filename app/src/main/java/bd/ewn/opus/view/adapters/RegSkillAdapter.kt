@@ -1,6 +1,7 @@
 package bd.ewn.opus.view.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -119,9 +120,22 @@ class RegSkillAdapter(private val skills: List<String>) :
             }
         }
 
-
-
         private fun updateSelectedSkills(adapterPosition: Int, selectedStars: Int) {
+            val skillId = adapterPosition + 1
+
+            val skillItem = SkillItem(skillId, selectedStars)
+            val existingSkillIndex = selectedSkillsList.indexOfFirst { it.skillId == skillId }
+
+            if (existingSkillIndex != -1) {
+                selectedSkillsList[existingSkillIndex] = skillItem
+                Log.d("EWNARRAYRegSkillAdapter", "Updated skill: $skillItem")
+            } else {
+                selectedSkillsList.add(skillItem)
+                Log.d("EWNARRAYRegSkillAdapter", "Added skill: $skillItem")
+            }
+        }
+
+      /*  private fun updateSelectedSkills(adapterPosition: Int, selectedStars: Int) {
             val skillId = adapterPosition + 1
 
             val skillItem = SkillItem(skillId, selectedStars)
@@ -132,7 +146,7 @@ class RegSkillAdapter(private val skills: List<String>) :
             } else {
                 selectedSkillsList.add(skillItem)
             }
-        }
+        }*/
     }
 
 }

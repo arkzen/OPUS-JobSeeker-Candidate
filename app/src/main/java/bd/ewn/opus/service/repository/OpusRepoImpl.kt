@@ -1,21 +1,37 @@
 package bd.ewn.opus.service.repository
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.util.Log
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.MutableLiveData
+import bd.ewn.opus.service.model.CurrentLocationModel
 import bd.ewn.opus.service.model.LoginPojo
 import bd.ewn.opus.service.model.PassResetEmailPojo
+import bd.ewn.opus.service.model.SignUpPojo
 import bd.ewn.opus.service.network.ApiServices
 import bd.ewn.opus.service.network.RetrofitInstance
 import bd.ewn.opus.service.network.request.LoginBody
+import bd.ewn.opus.service.network.request.ResetPassBody
+import bd.ewn.opus.service.network.request.SignupBody
+import bd.ewn.opus.service.network.request.resetReqBody
 import bd.ewn.opus.service.util.SharedPrefDataProvider
+import com.google.android.gms.location.LocationServices
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.IOException
+import java.util.Locale
 
 class OpusRepoImpl private constructor() : OpusRepository {
 
     private val mLivedata: MutableLiveData<LoginPojo> = MutableLiveData()
+    private val signUpLivedata: MutableLiveData<SignUpPojo> = MutableLiveData()
+    private var getOtp: MutableLiveData<PassResetEmailPojo> = MutableLiveData()
+    private var setPass: MutableLiveData<PassResetEmailPojo> = MutableLiveData()
     private var rInstance: RetrofitInstance = RetrofitInstance()
 
     override fun cLoginResponse(
@@ -51,7 +67,6 @@ class OpusRepoImpl private constructor() : OpusRepository {
                         SharedPrefDataProvider.setAccessToken(accesstoken)
                     }
 
-
                     mLivedata.postValue(loginResponse!!)
                 }
 
@@ -70,8 +85,185 @@ class OpusRepoImpl private constructor() : OpusRepository {
         context: Context,
         email: String
     ): MutableLiveData<PassResetEmailPojo> {
-        TODO("Not yet implemented")
+
+        val apiServices = rInstance.getRetrofitInstance()?.create(ApiServices::class.java)
+        val emailbody=resetReqBody(email)
+        val call = apiServices?.getOTPbyEmail(emailbody)
+        Log.d("CDSIGNUP","Email: $email")
+
+        try {
+            call?.enqueue(object : Callback<PassResetEmailPojo> {
+                override fun onResponse(
+                    call: Call<PassResetEmailPojo>,
+                    response: Response<PassResetEmailPojo>
+                ) {
+
+                    if (!response.isSuccessful) {
+                        Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                    val successMsg = response.body()
+                    SharedPrefDataProvider.initialize(context)
+                    SharedPrefDataProvider.setResetPassEmail(email)
+                    getOtp.postValue(successMsg!!)
+                }
+
+                override fun onFailure(call: Call<PassResetEmailPojo>, t: Throwable) {
+                    Toast.makeText(context, "OTP send failed", Toast.LENGTH_SHORT).show()
+                }
+            })
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(context, "OTP send failed", Toast.LENGTH_SHORT).show()
+        }
+
+   return getOtp }
+
+    override fun resetPass(context: Context,pass:String): MutableLiveData<PassResetEmailPojo> {
+
+        val apiServices = rInstance.getRetrofitInstance()?.create(ApiServices::class.java)
+        val username:String?=SharedPrefDataProvider.getResetPassEmail()
+        val otp=SharedPrefDataProvider.getResetPassOtp()
+        val body= username?.let { ResetPassBody(it,pass,otp) }
+        val call = body?.let { apiServices?.resetPass(it) }
+
+
+        try {
+            call?.enqueue(object : Callback<PassResetEmailPojo> {
+                override fun onResponse(
+                    call: Call<PassResetEmailPojo>,
+                    response: Response<PassResetEmailPojo>
+                ) {
+
+                    if (!response.isSuccessful) {
+                        Toast.makeText(context, "Set Password Failed", Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                    val successMsg = response.body()
+                    setPass.postValue(successMsg!!)
+                }
+
+                override fun onFailure(call: Call<PassResetEmailPojo>, t: Throwable) {
+                    Toast.makeText(context, "Set Password Failed", Toast.LENGTH_SHORT).show()
+                }
+            })
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(context, "Set Password Failed", Toast.LENGTH_SHORT).show()
+        }
+
+        return setPass
     }
+
+    override fun getCurrentLocation(context: Context): MutableLiveData<CurrentLocationModel> {
+        val currentLocationLiveData = MutableLiveData<CurrentLocationModel>()
+
+        val client = LocationServices.getFusedLocationProviderClient(context)
+
+        val permissionCheck = PackageManager.PERMISSION_GRANTED
+        val fineLocationPermission = ActivityCompat.checkSelfPermission(
+            context,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
+        val coarseLocationPermission = ActivityCompat.checkSelfPermission(
+            context,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+
+        if (fineLocationPermission != permissionCheck || coarseLocationPermission != permissionCheck) {
+            return currentLocationLiveData
+        }
+
+        val task = client.lastLocation
+        task.addOnSuccessListener { location ->
+            if (location != null) {
+                val geocoder = Geocoder(context, Locale.getDefault())
+                val latitude = location.latitude
+                val longitude = location.longitude
+
+                try {
+                    val addresses = geocoder.getFromLocation(latitude, longitude, 1)
+
+                    if (addresses != null && addresses.size > 0) {
+                        val address = addresses[0]
+                        val locationName = address.getAddressLine(0)
+
+                        val locationModel = CurrentLocationModel(
+                            latitude,
+                            longitude,
+                            locationName
+                        )
+                        currentLocationLiveData.value = locationModel
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        return currentLocationLiveData
+    }
+
+    override fun postSignUp(context: Context,signupBody: SignupBody): MutableLiveData<SignUpPojo> {
+        val apiServices = rInstance.getRetrofitInstance()?.create(ApiServices::class.java)
+
+
+       /* val email=signupBody.account.email
+        val fname=signupBody.account.first_name
+        val name=signupBody.account.last_name
+        val  pass=signupBody.account.password
+        val summary=signupBody.candidate.summary
+        val gender=signupBody.candidate.gender
+        val designation=signupBody.candidate.designation
+        val  phnNo=signupBody.candidate.phone_number
+        val  lat=signupBody.candidate.lat
+        val lon=signupBody.candidate.lon
+        val city=signupBody.candidate.city
+        val  country=signupBody.candidate.country
+        val id_number=signupBody.candidate.id_number
+        val avatar=signupBody.candidate.avatar
+        val  resume=signupBody.candidate.resume
+        val candidateSkList=signupBody.candidate.candidate_skill
+        val prof=signupBody.profile
+        Log.d("CDSIGNUP","signup body : email: $email ,fname: $fname ,name: $name ,pass: $pass," +
+                "summary: $summary,gender: $gender,designation: $designation,phnNo: $phnNo, lat: $lat," +
+                " lon: $lon,city: $city,country: $country,id_number: $id_number,avatar: $avatar,resume: $resume," +
+                "candidateSkList: $candidateSkList,prof: $prof")
+
+    */
+
+        val call = apiServices?.postSignUp(signupBody)
+
+
+        try {
+            call?.enqueue(object : Callback<SignUpPojo> {
+                override fun onResponse(
+                    call: Call<SignUpPojo>,
+                    response: Response<SignUpPojo>
+                ) {
+                    Log.d("CDSIGNUP",response.message())
+                    Log.d("CDSIGNUP", response.errorBody().toString())
+
+                    if (!response.isSuccessful) {
+                        Toast.makeText(context, "SignUp Failed", Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                    val SignUpResponse = response.body()
+
+                    signUpLivedata.postValue(SignUpResponse!!)
+                }
+
+                override fun onFailure(call: Call<SignUpPojo>, t: Throwable) {
+                    Toast.makeText(context, "SignUp onFailure", Toast.LENGTH_SHORT).show()
+                }
+            })
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(context, "SignUp Exception", Toast.LENGTH_SHORT).show()
+        }
+        return signUpLivedata
+
+    }
+
 
     companion object {
         private var instance: OpusRepoImpl? = null

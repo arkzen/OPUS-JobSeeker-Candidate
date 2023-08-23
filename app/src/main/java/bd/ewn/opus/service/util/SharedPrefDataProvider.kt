@@ -27,13 +27,13 @@ object SharedPrefDataProvider {
         return sharedPreferences.getString(KEY_RESETPASS_EMAIL, null)
     }
 
-    fun setResetPassOtp(resetPassOtp: String) {
-        editor.putString(KEY_RESETPASS_OTP, resetPassOtp)
+    fun setResetPassOtp(resetPassOtp: Int) {
+        editor.putInt(KEY_RESETPASS_OTP, resetPassOtp)
         editor.apply()
     }
 
-    fun getResetPassOtp(): String? {
-        return sharedPreferences.getString(KEY_RESETPASS_OTP, null)
+    fun getResetPassOtp(): Int {
+        return sharedPreferences.getInt(KEY_RESETPASS_OTP, 0)
     }
 
     fun setLoginState(loginState: Boolean) {

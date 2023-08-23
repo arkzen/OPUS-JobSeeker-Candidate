@@ -1,179 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.ui.fragment.auth.ResetPassFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/btnCreateNewPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding20"
-        android:paddingStart="@dimen/margin_padding16"
-        android:src="@drawable/arrow_back_fil"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        style="@style/TextStyleMedium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_padding8"
-        android:layout_marginTop="@dimen/margin_padding20"
-        android:text="@string/reset_password"
-        app:layout_constraintStart_toEndOf="@id/btnCreateNewPass"
-        app:layout_constraintTop_toTopOf="parent" />
+    </data>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/margin_padding16"
-        android:layout_marginEnd="@dimen/margin_padding16"
-        app:cardCornerRadius="@dimen/margin_padding16"
-        app:layout_constraintBottom_toBottomOf="@id/guideline1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="@dimen/margin_padding24">
-
-            <TextView
-                android:id="@+id/tvCreateNewPass"
-                style="@style/TextStyleBig20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/create_new_password"
-                android:textAlignment="center"
-                android:textFontWeight="500"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edNewPass"
-                style="@style/TextStyleHint"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_padding48"
-                android:layout_marginTop="@dimen/margin_padding30"
-                android:background="@drawable/edittextstaeselector"
-                android:hint="@string/new_password"
-                android:inputType="textEmailAddress"
-                android:paddingStart="@dimen/margin_padding24"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvCreateNewPass" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btnPassHideEye"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:src="@drawable/ic_baseline_visibility"
-                app:layout_constraintBottom_toBottomOf="@id/edNewPass"
-                app:layout_constraintEnd_toEndOf="@id/edNewPass"
-                app:layout_constraintTop_toTopOf="@id/edNewPass" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btnPassHideEye1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:src="@drawable/ic_baseline_visibility_off"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/edNewPass"
-                app:layout_constraintEnd_toEndOf="@id/edNewPass"
-                app:layout_constraintTop_toTopOf="@id/edNewPass" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edNewPassConfirm"
-                style="@style/TextStyleHint"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_padding48"
-                android:layout_marginTop="@dimen/margin_padding30"
-                android:background="@drawable/edittextstaeselector"
-                android:hint="@string/confirm_password"
-                android:inputType="textEmailAddress"
-                android:paddingStart="@dimen/margin_padding24"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edNewPass" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btnPassHideCP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:src="@drawable/ic_baseline_visibility"
-                app:layout_constraintBottom_toBottomOf="@id/edNewPassConfirm"
-                app:layout_constraintEnd_toEndOf="@id/edNewPassConfirm"
-                app:layout_constraintTop_toTopOf="@id/edNewPassConfirm" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btnPassHideCP1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:src="@drawable/ic_baseline_visibility_off"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/edNewPassConfirm"
-                app:layout_constraintEnd_toEndOf="@id/edNewPassConfirm"
-                app:layout_constraintTop_toTopOf="@id/edNewPassConfirm" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/LayoutCardBottom"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:cardBackgroundColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".view.ui.fragment.auth.ResetPassFragment">
 
-        <RelativeLayout
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnCreateNewPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding20"
+            android:paddingStart="@dimen/margin_padding16"
+            android:src="@drawable/arrow_back_fil"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/TextStyleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding8"
+            android:layout_marginTop="@dimen/margin_padding20"
+            android:text="@string/reset_password"
+            app:layout_constraintStart_toEndOf="@id/btnCreateNewPass"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_padding16"
+            android:layout_marginEnd="@dimen/margin_padding16"
+            app:cardCornerRadius="@dimen/margin_padding16"
+            app:layout_constraintBottom_toBottomOf="@id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_padding24">
+
+                <TextView
+                    android:id="@+id/tvCreateNewPass"
+                    style="@style/TextStyleBig20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_new_password"
+                    android:textAlignment="center"
+                    android:textFontWeight="500"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edNewPass"
+                    style="@style/TextStyleHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_padding48"
+                    android:layout_marginTop="@dimen/margin_padding30"
+                    android:background="@drawable/edittextstaeselector"
+                    android:hint="@string/new_password"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="@dimen/margin_padding24"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvCreateNewPass" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnPassHideEye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/ic_baseline_visibility"
+                    app:layout_constraintBottom_toBottomOf="@id/edNewPass"
+                    app:layout_constraintEnd_toEndOf="@id/edNewPass"
+                    app:layout_constraintTop_toTopOf="@id/edNewPass" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnPassHideEye1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/ic_baseline_visibility_off"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/edNewPass"
+                    app:layout_constraintEnd_toEndOf="@id/edNewPass"
+                    app:layout_constraintTop_toTopOf="@id/edNewPass" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edNewPassConfirm"
+                    style="@style/TextStyleHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_padding48"
+                    android:layout_marginTop="@dimen/margin_padding30"
+                    android:background="@drawable/edittextstaeselector"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="@dimen/margin_padding24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edNewPass" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnPassHideCP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/ic_baseline_visibility"
+                    app:layout_constraintBottom_toBottomOf="@id/edNewPassConfirm"
+                    app:layout_constraintEnd_toEndOf="@id/edNewPassConfirm"
+                    app:layout_constraintTop_toTopOf="@id/edNewPassConfirm" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnPassHideCP1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/ic_baseline_visibility_off"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/edNewPassConfirm"
+                    app:layout_constraintEnd_toEndOf="@id/edNewPassConfirm"
+                    app:layout_constraintTop_toTopOf="@id/edNewPassConfirm" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/LayoutCardBottom"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+            android:layout_height="100dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/Btn_Save_changes"
-                android:layout_width="320dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="@dimen/margin_padding30"
-                android:background="@drawable/btn_shape_login"
-                android:backgroundTint="@color/blue"
-                android:text="@string/save_changes"
-                android:textAllCaps="false"
-                android:textColor="@color/white" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
 
-        </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSaveChanges"
+                    android:layout_width="320dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="@dimen/margin_padding30"
+                    android:background="@drawable/btn_shape_login"
+                    android:backgroundTint="@color/blue"
+                    android:text="@string/save_changes"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
 
-    </androidx.cardview.widget.CardView>
+            </RelativeLayout>
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.16" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".5" />
+        </androidx.cardview.widget.CardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.16" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".5" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

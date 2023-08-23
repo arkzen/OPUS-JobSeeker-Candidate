@@ -10,22 +10,27 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/bg"
         tools:context=".view.ui.fragment.auth.RegisterFragment">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.055" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/btnBack"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gl_top"
             app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/arrow_back_fil"
             android:layout_marginStart="@dimen/margin_padding20"
-            android:layout_marginTop="@dimen/margin_padding20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gl_top"
             app:layout_constraintStart_toEndOf="@id/btnBack"
-            android:layout_marginTop="@dimen/margin_padding20"
             android:text="@string/select_your_skills"
             style="@style/TextStyleMedium"
             android:layout_marginStart="@dimen/margin_padding8"
@@ -82,25 +87,26 @@
                     android:layout_height="@dimen/margin_padding48" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/ED_phone"
+                    android:id="@+id/edPhone"
                     app:layout_constraintTop_toBottomOf="@id/edEmail"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:hint="@string/mobile_no"
                     style="@style/TextStyleHint"
-                    android:inputType="phone"
+                    android:inputType="number"
                     android:layout_marginTop="@dimen/margin_padding24"
                     android:background="@drawable/edittextstaeselector"
                     android:paddingStart="@dimen/margin_padding24"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_padding48" />
 
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etGender"
-                    app:layout_constraintTop_toBottomOf="@id/ED_phone"
+                    app:layout_constraintTop_toBottomOf="@id/edPhone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:hint="@string/gender"
+                    android:hint="@string/emty"
                     style="@style/TextStyleHint"
                     android:inputType="textEmailAddress"
                     android:layout_marginTop="@dimen/margin_padding24"
@@ -109,8 +115,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_padding48" />
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/etLocation"
+                <Spinner
+                    android:id="@+id/spinerGender"
+                    app:layout_constraintTop_toTopOf="@id/etGender"
+                    app:layout_constraintEnd_toEndOf="@id/etGender"
+                    android:layout_width="match_parent"
+                    android:spinnerMode="dropdown"
+                    android:paddingStart="@dimen/margin_padding16"
+                    android:layout_height="48dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLocation"
                     app:layout_constraintTop_toBottomOf="@id/etGender"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -119,16 +134,16 @@
                     android:inputType="textEmailAddress"
                     android:layout_marginTop="@dimen/margin_padding24"
                     android:background="@drawable/edittextstaeselector"
-
+                    android:gravity=""
                     android:paddingStart="@dimen/margin_padding24"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_padding48" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/iconBtnLocation"
-                    app:layout_constraintTop_toTopOf="@id/etLocation"
-                    app:layout_constraintEnd_toEndOf="@id/etLocation"
-                    app:layout_constraintBottom_toBottomOf="@id/etLocation"
+                    app:layout_constraintTop_toTopOf="@id/tvLocation"
+                    app:layout_constraintEnd_toEndOf="@id/tvLocation"
+                    app:layout_constraintBottom_toBottomOf="@id/tvLocation"
                     android:src="@drawable/ic_baseline_gps_fixed"
                     android:layout_marginEnd="@dimen/margin_padding16"
                     android:layout_width="wrap_content"
@@ -136,7 +151,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edPassword"
-                    app:layout_constraintTop_toBottomOf="@id/etLocation"
+                    app:layout_constraintTop_toBottomOf="@id/tvLocation"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:hint="@string/hint_qpassword"
@@ -144,7 +159,6 @@
                     android:inputType="textEmailAddress"
                     android:layout_marginTop="@dimen/margin_padding24"
                     android:background="@drawable/edittextstaeselector"
-
                     android:paddingStart="@dimen/margin_padding24"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_padding48" />
@@ -212,35 +226,6 @@
 
         </androidx.cardview.widget.CardView>
 
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.10" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="600dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.87" />
-
-        <View
-            android:id="@+id/skillbottom"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/mercury"
-            app:layout_constraintBottom_toTopOf="@id/bottom" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/bottom"
             android:layout_width="0dp"
@@ -252,11 +237,11 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnCreate"
+                android:id="@+id/btnCreateAccount"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="Create Account"
+                android:text="@string/create_account"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/blue"
                 android:background="@drawable/btn_bg_blue"
@@ -266,7 +251,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_padding30"
                 android:layout_marginEnd="@dimen/margin_padding30" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.10" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.87" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

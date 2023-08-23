@@ -1,14 +1,17 @@
 package bd.ewn.opus.view.ui.fragment.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Parcelable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import bd.ewn.opus.R
 import bd.ewn.opus.databinding.FragmentRegisterSkillBinding
+import bd.ewn.opus.service.model.SkillItem
 import bd.ewn.opus.view.adapters.RegSkillAdapter
 
 class RegisterSkillFragment : Fragment(), View.OnClickListener {
@@ -58,14 +61,31 @@ class RegisterSkillFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btnBack -> {
-                Navigation.findNavController(requireView()).navigate(R.id.action_registerSkillFragment_to_loginFragment)
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_registerSkillFragment_to_loginFragment)
             }
+
             R.id.btnNext -> {
                 val selectedSkillsList = regSkillAdapter.getSelectedSkillsList()
-                /*   val action = RegisterSkillFragmentDirections.actionRegisterSkillFragmentToRegisterFragment(selectedSkillsList.toTypedArray())
-                   Navigation.findNavController(requireView()).navigate(action)
-   */
+                val parcelableList: ArrayList<SkillItem?> = ArrayList(selectedSkillsList)
+
+                val bundle = Bundle()
+
+                bundle.putParcelableArrayList("selectedSkillsList", parcelableList)
+
+                Log.d("EWNARRAY", "skill list : ${parcelableList.size}")
+                Log.d("EWNARRAYRegisterSkillFragment", "Selected skills list size: ${selectedSkillsList.size}")
+
+                // Log each item individually
+                for (skill in selectedSkillsList) {
+                    Log.d("EWNARRAY", "Skill Id: ${skill.skillId}, Skill Level: ${skill.skillLevel}")
+                }
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_registerSkillFragment_to_registerFragment, bundle)
+
+
 
             }
         }
-    }}
+    }
+}
