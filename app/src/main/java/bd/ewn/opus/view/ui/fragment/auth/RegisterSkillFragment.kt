@@ -76,7 +76,7 @@ class RegisterSkillFragment : Fragment(), View.OnClickListener {
                 Log.d("EWNARRAY", "skill list : ${parcelableList.size}")
                 Log.d("EWNARRAYRegisterSkillFragment", "Selected skills list size: ${selectedSkillsList.size}")
 
-                // Log each item individually
+
                 for (skill in selectedSkillsList) {
                     Log.d("EWNARRAY", "Skill Id: ${skill.skillId}, Skill Level: ${skill.skillLevel}")
                 }

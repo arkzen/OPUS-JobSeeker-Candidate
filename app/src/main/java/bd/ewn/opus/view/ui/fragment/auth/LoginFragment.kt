@@ -1,10 +1,7 @@
 package bd.ewn.opus.view.ui.fragment.auth
 
-import android.os.Build
 import android.os.Bundle
 import android.text.InputType
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -16,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import bd.ewn.opus.R
 import bd.ewn.opus.databinding.FragmentLoginBinding
-import bd.ewn.opus.service.util.SessionManager
+import bd.ewn.opus.service.util.SharedPrefDataProvider
 import bd.ewn.opus.viewmodel.LoginViewModel
 import java.util.Locale
 
@@ -98,9 +95,9 @@ class LoginFragment : Fragment(), OnClickListener {
                 val email = binding.edEmail.text.toString()
                 val pass = binding.edPassword.text.toString()
 
-              /*  if (isValid()) {
+                if (isValid()) {
                     loginCheck(email, pass)
-                }*/
+                }
 
             }
 
@@ -110,14 +107,10 @@ class LoginFragment : Fragment(), OnClickListener {
 
     private fun showpass() {
 
-            binding.edPassword.layoutDirection = View.LAYOUT_DIRECTION_RTL
-
-//        Toast.makeText(requireActivity(), " Show pass clicked!", Toast.LENGTH_SHORT).show()
         binding.btnPassHideEye.visibility = View.GONE
         binding.btnPassHideEye1.visibility = View.VISIBLE
 
         binding.edPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-//        binding.edPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
         binding.edPassword.text?.let { binding.edPassword.setSelection(it.length) }
 
 
@@ -127,42 +120,38 @@ class LoginFragment : Fragment(), OnClickListener {
 
 
     private fun hidePass() {
-//        Toast.makeText(requireActivity(), " hide pass clicked", Toast.LENGTH_SHORT).show()
 
         binding.btnPassHideEye.visibility = View.VISIBLE
         binding.btnPassHideEye1.visibility = View.GONE
 
         binding.edPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-
-       // binding.edPassword.transformationMethod = PasswordTransformationMethod.getInstance()
         binding.edPassword.text?.let { binding.edPassword.setSelection(it.length) }
     }
 
     private fun slectLang() {
         binding.cvAppLang.visibility = View.GONE
         binding.cvLangSelect.visibility = View.VISIBLE
+        SharedPrefDataProvider.initialize(requireContext())
 
         binding.btnEnglish.setOnClickListener {
 
           if ( Locale.getDefault().language.equals("en")){
-//              Toast.makeText(requireActivity(), " English Selected!", Toast.LENGTH_SHORT).show()
+
               binding.btnImgCheckEn.visibility = View.VISIBLE
               binding.btnImgCheckAr.visibility = View.INVISIBLE
               binding.btnEnglish.setTextColor(resources.getColor(R.color.green))
               binding.btnArabic.setTextColor(resources.getColor(R.color.gray))
           }
-            SessionManager.setAppLanguage(requireContext(), "en")
+            SharedPrefDataProvider.setAppLanguage(requireContext(), "en")
             requireActivity().recreate()
 
 
         }
 
         binding.btnArabic.setOnClickListener {
-            SessionManager.setAppLanguage(requireContext(), "ar")
+            SharedPrefDataProvider.setAppLanguage(requireContext(), "ar")
             requireActivity().recreate()
-            binding.edPassword.layoutDirection = View.LAYOUT_DIRECTION_RTL
 
-//            Toast.makeText(requireActivity(), " Arabic Selected!", Toast.LENGTH_SHORT).show()
             binding.btnImgCheckEn.visibility = View.INVISIBLE
             binding.btnImgCheckAr.visibility = View.VISIBLE
             binding.btnEnglish.setTextColor(resources.getColor(R.color.gray))

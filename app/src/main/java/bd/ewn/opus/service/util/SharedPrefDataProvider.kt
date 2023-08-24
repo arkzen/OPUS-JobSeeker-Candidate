@@ -2,6 +2,8 @@ package bd.ewn.opus.service.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
+import java.util.Locale
 
 object SharedPrefDataProvider {
     private const val PREF_NAME = "OpusPrefs"
@@ -9,6 +11,7 @@ object SharedPrefDataProvider {
     private const val KEY_ACCESS_TOKEN = "accessToken"
     private const val KEY_RESETPASS_EMAIL = "resetPassEmail"
     private const val KEY_RESETPASS_OTP = "resetPassOtp"
+    private const val KEY_LANGUAGE = "language"
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
@@ -53,4 +56,27 @@ object SharedPrefDataProvider {
     fun getAccessToken(): String? {
         return sharedPreferences.getString(KEY_ACCESS_TOKEN, null)
     }
+
+    fun setAppLanguage(context: Context, languageCode: String) {
+
+        editor.putString(KEY_LANGUAGE, languageCode)
+        editor.apply()
+        updateAppLanguage(context, languageCode)
+    }
+
+    fun getAppLanguage(context: Context): String? {
+                return sharedPreferences.getString(KEY_LANGUAGE,Locale.getDefault().language)
+    }
+
+
+    private fun updateAppLanguage(context: Context, languageCode: String) {
+
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = Configuration(context.resources.configuration)
+        config.setLocale(locale)
+        context.resources.updateConfiguration(config, context.resources.displayMetrics)
+
+    }
+
 }

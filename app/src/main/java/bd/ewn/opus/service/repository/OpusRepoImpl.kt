@@ -89,7 +89,6 @@ class OpusRepoImpl private constructor() : OpusRepository {
         val apiServices = rInstance.getRetrofitInstance()?.create(ApiServices::class.java)
         val emailbody=resetReqBody(email)
         val call = apiServices?.getOTPbyEmail(emailbody)
-        Log.d("CDSIGNUP","Email: $email")
 
         try {
             call?.enqueue(object : Callback<PassResetEmailPojo> {
@@ -206,42 +205,13 @@ class OpusRepoImpl private constructor() : OpusRepository {
     override fun postSignUp(context: Context,signupBody: SignupBody): MutableLiveData<SignUpPojo> {
         val apiServices = rInstance.getRetrofitInstance()?.create(ApiServices::class.java)
 
-
-       /* val email=signupBody.account.email
-        val fname=signupBody.account.first_name
-        val name=signupBody.account.last_name
-        val  pass=signupBody.account.password
-        val summary=signupBody.candidate.summary
-        val gender=signupBody.candidate.gender
-        val designation=signupBody.candidate.designation
-        val  phnNo=signupBody.candidate.phone_number
-        val  lat=signupBody.candidate.lat
-        val lon=signupBody.candidate.lon
-        val city=signupBody.candidate.city
-        val  country=signupBody.candidate.country
-        val id_number=signupBody.candidate.id_number
-        val avatar=signupBody.candidate.avatar
-        val  resume=signupBody.candidate.resume
-        val candidateSkList=signupBody.candidate.candidate_skill
-        val prof=signupBody.profile
-        Log.d("CDSIGNUP","signup body : email: $email ,fname: $fname ,name: $name ,pass: $pass," +
-                "summary: $summary,gender: $gender,designation: $designation,phnNo: $phnNo, lat: $lat," +
-                " lon: $lon,city: $city,country: $country,id_number: $id_number,avatar: $avatar,resume: $resume," +
-                "candidateSkList: $candidateSkList,prof: $prof")
-
-    */
-
         val call = apiServices?.postSignUp(signupBody)
-
-
         try {
             call?.enqueue(object : Callback<SignUpPojo> {
                 override fun onResponse(
                     call: Call<SignUpPojo>,
                     response: Response<SignUpPojo>
                 ) {
-                    Log.d("CDSIGNUP",response.message())
-                    Log.d("CDSIGNUP", response.errorBody().toString())
 
                     if (!response.isSuccessful) {
                         Toast.makeText(context, "SignUp Failed", Toast.LENGTH_SHORT).show()

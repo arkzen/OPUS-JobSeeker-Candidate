@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import bd.ewn.opus.R
 import bd.ewn.opus.view.ui.activity.Homepage
@@ -24,7 +25,7 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Delayed navigation logic
+        // Delayed navigation logic, didn't implemented yet
         Handler(Looper.getMainLooper()).postDelayed({
             /*val intent = if (state == true) {
                 Intent(requireContext(), Homepage::class.java)
@@ -37,10 +38,12 @@ class SplashFragment : Fragment() {
                 startActivity(intent)
                 requireActivity().finish()
             }*/
+            val navController=NavController(requireContext())
+          navController.popBackStack(R.id.splashFragment, false);
             Navigation.findNavController(view).navigate(R.id.loginFragment)
 
 
-        }, 3000) // 3000 milliseconds = 3 seconds delay
+        }, 3000)
     }
 
 

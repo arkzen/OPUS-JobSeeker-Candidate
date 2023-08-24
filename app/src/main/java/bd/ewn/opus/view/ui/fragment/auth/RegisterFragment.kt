@@ -123,7 +123,6 @@ class RegisterFragment : Fragment(), OnClickListener {
         binding.iconPassConfirmHide1.visibility = View.GONE
 
         binding.etConfirmPass.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-        //binding.etConfirmPass.transformationMethod = PasswordTransformationMethod.getInstance()
         binding.etConfirmPass.text?.let { binding.etConfirmPass.setSelection(it.length) }
     }
 
@@ -132,17 +131,14 @@ class RegisterFragment : Fragment(), OnClickListener {
         binding.iconPassConfirmHide1.visibility = View.VISIBLE
 
          binding.etConfirmPass.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-        //binding.etConfirmPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
         binding.etConfirmPass.text?.let { binding.etConfirmPass.setSelection(it.length) }
     }
 
     private fun hidePass() {
-       // Toast.makeText(requireActivity(), " Show pass clicked!", Toast.LENGTH_SHORT).show()
         binding.btnPassHideEye.visibility = View.VISIBLE
         binding.btnPassHideEye1.visibility = View.GONE
 
         binding.edPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-       // binding.edPassword.transformationMethod = PasswordTransformationMethod.getInstance()
         binding.edPassword.text?.let { binding.edPassword.setSelection(it.length) }
     }
 
@@ -151,7 +147,6 @@ class RegisterFragment : Fragment(), OnClickListener {
         binding.btnPassHideEye1.visibility = View.VISIBLE
 
         binding.edPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-        //binding.edPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
         binding.edPassword.text?.let { binding.edPassword.setSelection(it.length) }
     }
 
@@ -165,6 +160,7 @@ class RegisterFragment : Fragment(), OnClickListener {
         var selectedGender = "Male"
 
 
+        //commented for SQA team test purpose recomendation
        /* if (name.isEmpty()) {
             Toast.makeText(context, "Enter Your Full Name", Toast.LENGTH_LONG).show()
             return
@@ -231,9 +227,8 @@ class RegisterFragment : Fragment(), OnClickListener {
             return
         }*/
 
-        Log.d("CDSIGNUP","Candidate SignUp Method Called")
         candidateSignUp(name, email, phnNo, selectedGender, lat, lon, pass)
-        //Toast.makeText(context, "  candidateSignUp method called", Toast.LENGTH_LONG).show()
+
 
     }
 
@@ -278,7 +273,6 @@ class RegisterFragment : Fragment(), OnClickListener {
 
         val signupBody = SignupBody(prof, account, candidate)
 
-        Log.d("CDSIGNUP","I'm in Candidate signup method")
 
 
 
@@ -306,7 +300,6 @@ class RegisterFragment : Fragment(), OnClickListener {
 
     private fun requestLocation() {
         val PERMISSION_REQUEST_CODE = 100
-       // Toast.makeText(context, "  requestLocation working", Toast.LENGTH_LONG).show()
         val permissionCheck = PackageManager.PERMISSION_GRANTED
         val fineLocationPermission = ActivityCompat.checkSelfPermission(
             requireContext(),
@@ -326,15 +319,13 @@ class RegisterFragment : Fragment(), OnClickListener {
                 ),
                 PERMISSION_REQUEST_CODE
             )
-        Log.d("CDSIGNUP","Location permission not granted")
+
         } else {
 
             userLocationViewModel.getCurrentLocation(requireContext())
                 .observe(viewLifecycleOwner, Observer { locationModel ->
                     binding.tvLocation.text = locationModel.location
 
-                    //Toast.makeText(context, "  Location updated", Toast.LENGTH_LONG).show()
-                    Log.d("CDSIGNUP","Location: ${locationModel.location}")
                     this.lat = locationModel.lat.toFloat()
                     this.lon = locationModel.lan.toFloat()
                 })

@@ -2,27 +2,23 @@ package bd.ewn.opus.view.ui.fragment.auth
 
 import android.os.Bundle
 import android.text.InputType
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import bd.ewn.opus.R
-import bd.ewn.opus.databinding.FragmentRPgetOTPBinding
 import bd.ewn.opus.databinding.FragmentResetPassBinding
-import bd.ewn.opus.viewmodel.PassResReqViewmodel
 import bd.ewn.opus.viewmodel.ResetPasswordViewmodel
 
 
-class ResetPassFragment : Fragment(),OnClickListener {
+class ResetPassFragment : Fragment(), OnClickListener {
 
-    private lateinit var binding:FragmentResetPassBinding
+    private lateinit var binding: FragmentResetPassBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,24 +58,29 @@ class ResetPassFragment : Fragment(),OnClickListener {
                     return
                 }
 
-                if(newPass==conPass){
+                if (newPass == conPass) {
                     resetPass(newPass)
-                }else Toast.makeText(context, "Password didn't matched", Toast.LENGTH_LONG).show()
+                } else Toast.makeText(context, "Password didn't matched", Toast.LENGTH_LONG).show()
 
             }
-            R.id.btnPassHideEye->{
+
+            R.id.btnPassHideEye -> {
                 showpass1()
             }
-            R.id.btnPassHideEye1 ->{
+
+            R.id.btnPassHideEye1 -> {
                 hisepass1()
             }
+
             R.id.btnPassHideCP -> {
                 showpass()
             }
+
             R.id.btnPassHideCP1 -> {
                 hisepass()
             }
-            R.id.btnArrwoback ->{
+
+            R.id.btnArrwoback -> {
                 Navigation.findNavController(requireView())
                     .navigate(R.id.RPsubmitOTPFragment)
             }
@@ -92,8 +93,8 @@ class ResetPassFragment : Fragment(),OnClickListener {
         binding.btnPassHideCP.visibility = View.VISIBLE
         binding.btnPassHideCP1.visibility = View.GONE
 
-         binding.edNewPassConfirm.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-      //  binding.edNewPassConfirm.transformationMethod = PasswordTransformationMethod.getInstance()
+        binding.edNewPassConfirm.inputType =
+            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
         binding.edNewPassConfirm.text?.let { binding.edNewPassConfirm.setSelection(it.length) }
     }
 
@@ -101,8 +102,8 @@ class ResetPassFragment : Fragment(),OnClickListener {
         binding.btnPassHideCP.visibility = View.GONE
         binding.btnPassHideCP1.visibility = View.VISIBLE
 
-        binding.edNewPassConfirm.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-      //  binding.edNewPassConfirm.transformationMethod = HideReturnsTransformationMethod.getInstance()
+        binding.edNewPassConfirm.inputType =
+            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
         binding.edNewPassConfirm.text?.let { binding.edNewPassConfirm.setSelection(it.length) }
     }
 
@@ -110,8 +111,8 @@ class ResetPassFragment : Fragment(),OnClickListener {
         binding.btnPassHideEye.visibility = View.VISIBLE
         binding.btnPassHideEye1.visibility = View.GONE
 
-         binding.edNewPass.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-        //binding.edNewPass.transformationMethod = PasswordTransformationMethod.getInstance()
+        binding.edNewPass.inputType =
+            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
         binding.edNewPass.text?.let { binding.edNewPass.setSelection(it.length) }
     }
 
@@ -119,8 +120,8 @@ class ResetPassFragment : Fragment(),OnClickListener {
         binding.btnPassHideEye.visibility = View.GONE
         binding.btnPassHideEye1.visibility = View.VISIBLE
 
-         binding.edNewPass.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-        //binding.edNewPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
+        binding.edNewPass.inputType =
+            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
         binding.edNewPass.text?.let { binding.edNewPass.setSelection(it.length) }
     }
 
@@ -128,7 +129,7 @@ class ResetPassFragment : Fragment(),OnClickListener {
 
         val resetPassViewmodel = ViewModelProvider(this)[ResetPasswordViewmodel::class.java]
 
-        resetPassViewmodel.resetPassResponse(requireContext(),pass)
+        resetPassViewmodel.resetPassResponse(requireContext(), pass)
             .observe(viewLifecycleOwner, Observer { resetPass ->
 
                 val details = resetPass.detail
@@ -136,8 +137,15 @@ class ResetPassFragment : Fragment(),OnClickListener {
                     if (details.isNotEmpty()) {
 
                         Toast.makeText(requireContext(), details, Toast.LENGTH_SHORT).show()
-                        Navigation.findNavController(requireView())
-                            .navigate(R.id.action_resetPassFragment_to_loginFragment)
+
+                        try {
+                            Navigation.findNavController(requireView())
+                                .navigate(R.id.action_resetPassFragment_to_loginFragment)
+                        }catch (e: Exception) {
+                            e.printStackTrace()
+                            Toast.makeText(context, "Reset Password Failed", Toast.LENGTH_SHORT).show()
+                        }
+
                     } else Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
                 }
             })
