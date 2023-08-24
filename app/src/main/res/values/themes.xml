@@ -5,6 +5,13 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
     <style name="Theme.OPUS" parent="Base.Theme.OPUS" />
 
     <style name="TextStyleMedium" parent="android:TextAppearance">
@@ -37,6 +44,10 @@
         <item name="android:textSize">@dimen/font20</item>
         <item name="android:textColor">@color/texcolorHeading</item>
         <item name="fontFamily">@font/outfit_bold</item>
+    </style>
+
+    <style name="RadioButtonNoBackground" parent="@style/Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:background">@null</item>
     </style>
 
 

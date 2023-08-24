@@ -1,60 +1,90 @@
 package bd.ewn.opus.view.ui.fragment.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import bd.ewn.opus.R
+import bd.ewn.opus.databinding.FragmentRPgetOTPBinding
+import bd.ewn.opus.viewmodel.PassResReqViewmodel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RPgetOTPFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class RPgetOTPFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class RPgetOTPFragment : Fragment(), OnClickListener {
+    private lateinit var binding: FragmentRPgetOTPBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_r_pget_o_t_p, container, false)
+        binding = FragmentRPgetOTPBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RPgetOTPFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RPgetOTPFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setOnclicklistener()
+    }
+
+    private fun setOnclicklistener() {
+        binding.btnGetOTP.setOnClickListener(this)
+        binding.btnResetPassword.setOnClickListener(this)
+    }
+
+
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.btnGetOTP -> {
+                val email = binding.etEmailRP.text.toString()
+
+                if (email.isEmpty()) {
+                    Toast.makeText(context, "Enter Your Email", Toast.LENGTH_LONG).show()
+                    return
                 }
+                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    Toast.makeText(context, "Please enter a valid  Email", Toast.LENGTH_LONG).show()
+                    return
+                }
+
+                sendOtpToEmail(email)
+
             }
+
+            R.id.btnResetPassword ->{
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.loginFragment)
+            }
+        }
+
+
+    }
+
+    private fun sendOtpToEmail(email: String) {
+
+        val sendOtpViewmodel = ViewModelProvider(this)[PassResReqViewmodel::class.java]
+
+        sendOtpViewmodel.OtpSendResponse(requireContext(), email)
+            .observe(viewLifecycleOwner, Observer { sendOtp ->
+
+                val details = sendOtp.detail
+                if (details != null) {
+                    if (details.isNotEmpty()) {
+
+                        Toast.makeText(requireContext(), details, Toast.LENGTH_SHORT).show()
+                        Navigation.findNavController(requireView())
+                            .navigate(R.id.action_RPgetOTPFragment_to_RPsubmitOTPFragment)
+                    } else Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
+                }
+            })
+
     }
 }
+
+
+
