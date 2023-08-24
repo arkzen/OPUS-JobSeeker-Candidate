@@ -1,6 +1,10 @@
 package bd.ewn.opus.view.ui.fragment.auth
 
+import android.os.Build
 import android.os.Bundle
+import android.text.InputType
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -12,7 +16,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import bd.ewn.opus.R
 import bd.ewn.opus.databinding.FragmentLoginBinding
+import bd.ewn.opus.service.util.SessionManager
 import bd.ewn.opus.viewmodel.LoginViewModel
+import java.util.Locale
+
 
 class LoginFragment : Fragment(), OnClickListener {
 
@@ -23,7 +30,27 @@ class LoginFragment : Fragment(), OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         binding = FragmentLoginBinding.inflate(inflater, container, false)
+
+        if ( Locale.getDefault().language.equals("en")){
+            binding.btnImgCheckEn.visibility = View.VISIBLE
+            binding.btnImgCheckAr.visibility = View.INVISIBLE
+            binding.btnEnglish.setTextColor(resources.getColor(R.color.green))
+            binding.btnArabic.setTextColor(resources.getColor(R.color.gray))
+
+
+        }
+        else if (Locale.getDefault().language.equals("ar")){
+            binding.btnImgCheckEn.visibility = View.INVISIBLE
+            binding.btnImgCheckAr.visibility = View.VISIBLE
+            binding.btnEnglish.setTextColor(resources.getColor(R.color.gray))
+            binding.btnArabic.setTextColor(resources.getColor(R.color.green))
+            binding.cvAppLang.layoutDirection = View.LAYOUT_DIRECTION_RTL
+            binding.cvLangSelect.layoutDirection =  View.LAYOUT_DIRECTION_RTL
+            binding.cvLoginView1.layoutDirection = View.LAYOUT_DIRECTION_RTL
+            binding.edPassword.layoutDirection = View.LAYOUT_DIRECTION_RTL
+        }
         return binding.root
     }
 
@@ -37,18 +64,18 @@ class LoginFragment : Fragment(), OnClickListener {
         binding.btnLogin.setOnClickListener(this)
         binding.tvBtnForgetPass.setOnClickListener(this)
         binding.btnCreateAccount.setOnClickListener(this)
+        binding.cvAppLang.setOnClickListener (this)
+        binding.btnPassHideEye.setOnClickListener(this)
+        binding.btnPassHideEye1.setOnClickListener(this)
+
     }
 
     override fun onClick(v: View) {
 
         when (v.id) {
-            R.id.btnLogin -> {
-                val email = binding.edEmail.text.toString()
-                val pass = binding.edPassword.text.toString()
 
-                if (isValid()) {
-                    loginCheck(email, pass)
-                }
+            R.id.cvAppLang ->{
+                slectLang()
             }
 
             R.id.tvBtnForgetPass -> {
@@ -58,9 +85,95 @@ class LoginFragment : Fragment(), OnClickListener {
             R.id.btnCreateAccount ->{
                 Navigation.findNavController(requireView()).navigate(R.id.registerSkillFragment)
             }
+            R.id.btnPassHideEye ->{
+                showpass()
+            }
+            R.id.btnPassHideEye1 ->{
+
+
+                hidePass()
+            }
+
+            R.id.btnLogin -> {
+                val email = binding.edEmail.text.toString()
+                val pass = binding.edPassword.text.toString()
+
+              /*  if (isValid()) {
+                    loginCheck(email, pass)
+                }*/
+
+            }
+
+        }
+
+    }
+
+    private fun showpass() {
+
+            binding.edPassword.layoutDirection = View.LAYOUT_DIRECTION_RTL
+
+//        Toast.makeText(requireActivity(), " Show pass clicked!", Toast.LENGTH_SHORT).show()
+        binding.btnPassHideEye.visibility = View.GONE
+        binding.btnPassHideEye1.visibility = View.VISIBLE
+
+        binding.edPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+//        binding.edPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+        binding.edPassword.text?.let { binding.edPassword.setSelection(it.length) }
+
+
+
+
+    }
+
+
+    private fun hidePass() {
+//        Toast.makeText(requireActivity(), " hide pass clicked", Toast.LENGTH_SHORT).show()
+
+        binding.btnPassHideEye.visibility = View.VISIBLE
+        binding.btnPassHideEye1.visibility = View.GONE
+
+        binding.edPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+
+       // binding.edPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+        binding.edPassword.text?.let { binding.edPassword.setSelection(it.length) }
+    }
+
+    private fun slectLang() {
+        binding.cvAppLang.visibility = View.GONE
+        binding.cvLangSelect.visibility = View.VISIBLE
+
+        binding.btnEnglish.setOnClickListener {
+
+          if ( Locale.getDefault().language.equals("en")){
+//              Toast.makeText(requireActivity(), " English Selected!", Toast.LENGTH_SHORT).show()
+              binding.btnImgCheckEn.visibility = View.VISIBLE
+              binding.btnImgCheckAr.visibility = View.INVISIBLE
+              binding.btnEnglish.setTextColor(resources.getColor(R.color.green))
+              binding.btnArabic.setTextColor(resources.getColor(R.color.gray))
+          }
+            SessionManager.setAppLanguage(requireContext(), "en")
+            requireActivity().recreate()
 
 
         }
+
+        binding.btnArabic.setOnClickListener {
+            SessionManager.setAppLanguage(requireContext(), "ar")
+            requireActivity().recreate()
+            binding.edPassword.layoutDirection = View.LAYOUT_DIRECTION_RTL
+
+//            Toast.makeText(requireActivity(), " Arabic Selected!", Toast.LENGTH_SHORT).show()
+            binding.btnImgCheckEn.visibility = View.INVISIBLE
+            binding.btnImgCheckAr.visibility = View.VISIBLE
+            binding.btnEnglish.setTextColor(resources.getColor(R.color.gray))
+            binding.btnArabic.setTextColor(resources.getColor(R.color.green))
+        }
+
+        binding.btnArrowSpinner.setOnClickListener {
+            binding.cvLangSelect.visibility = View.GONE
+            binding.cvAppLang.visibility = View.VISIBLE
+        }
+
     }
 
     private fun loginCheck(email: String, pass: String) {

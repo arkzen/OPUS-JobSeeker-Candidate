@@ -34,6 +34,7 @@ class RPgetOTPFragment : Fragment(), OnClickListener {
 
     private fun setOnclicklistener() {
         binding.btnGetOTP.setOnClickListener(this)
+        binding.btnResetPassword.setOnClickListener(this)
     }
 
 
@@ -53,6 +54,11 @@ class RPgetOTPFragment : Fragment(), OnClickListener {
 
                 sendOtpToEmail(email)
 
+            }
+
+            R.id.btnResetPassword ->{
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.loginFragment)
             }
         }
 

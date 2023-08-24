@@ -33,6 +33,8 @@ class RPsubmitOTPFragment : Fragment(),OnClickListener {
 
     private fun setOnclicklistener() {
         binding.BtnSubmitOTP.setOnClickListener(this)
+        binding.btnEnterOtp.setOnClickListener(this)
+
     }
 
 
@@ -61,6 +63,11 @@ class RPsubmitOTPFragment : Fragment(),OnClickListener {
                     .navigate(R.id.action_RPsubmitOTPFragment_to_resetPassFragment)
 
 
+            }
+
+            R.id.btnEnterOtp->{
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.RPgetOTPFragment)
             }
         }
 

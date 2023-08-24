@@ -31,7 +31,7 @@
         <TextView
             app:layout_constraintTop_toTopOf="@id/gl_top"
             app:layout_constraintStart_toEndOf="@id/btnBack"
-            android:text="@string/select_your_skills"
+            android:text="Add Info"
             style="@style/TextStyleMedium"
             android:layout_marginStart="@dimen/margin_padding8"
             android:layout_width="wrap_content"
@@ -67,6 +67,7 @@
                     android:layout_marginTop="@dimen/margin_padding24"
                     android:background="@drawable/edittextstaeselector"
                     android:paddingStart="@dimen/margin_padding24"
+                    android:paddingEnd="@dimen/margin_padding24"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_padding48" />
 
@@ -81,7 +82,7 @@
                     android:inputType="textEmailAddress"
                     android:layout_marginTop="@dimen/margin_padding24"
                     android:background="@drawable/edittextstaeselector"
-
+                    android:paddingEnd="@dimen/margin_padding24"
                     android:paddingStart="@dimen/margin_padding24"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_padding48" />
@@ -93,10 +94,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:hint="@string/mobile_no"
                     style="@style/TextStyleHint"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:layout_marginTop="@dimen/margin_padding24"
                     android:background="@drawable/edittextstaeselector"
                     android:paddingStart="@dimen/margin_padding24"
+                    android:paddingEnd="@dimen/margin_padding24"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_padding48" />
 
@@ -134,8 +136,9 @@
                     android:inputType="textEmailAddress"
                     android:layout_marginTop="@dimen/margin_padding24"
                     android:background="@drawable/edittextstaeselector"
-                    android:gravity=""
+                    android:gravity="center_vertical"
                     android:paddingStart="@dimen/margin_padding24"
+                    android:paddingEnd="@dimen/margin_padding48"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_padding48" />
 
@@ -156,10 +159,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:hint="@string/hint_qpassword"
                     style="@style/TextStyleHint"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPassword"
                     android:layout_marginTop="@dimen/margin_padding24"
                     android:background="@drawable/edittextstaeselector"
                     android:paddingStart="@dimen/margin_padding24"
+                    android:paddingEnd="@dimen/margin_padding40"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_padding48" />
 
@@ -170,7 +174,9 @@
                     app:layout_constraintBottom_toBottomOf="@id/edPassword"
                     android:layout_marginEnd="@dimen/margin_padding16"
                     android:layout_width="wrap_content"
-                    android:src="@drawable/ic_baseline_visibility"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_baseline_visibility_off"
                     android:layout_height="wrap_content" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -181,7 +187,9 @@
                     android:layout_marginEnd="@dimen/margin_padding16"
                     android:layout_width="wrap_content"
                     android:visibility="gone"
-                    android:src="@drawable/ic_baseline_visibility_off"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_baseline_visibility"
                     android:layout_height="wrap_content" />
 
 
@@ -193,11 +201,12 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:hint="@string/confirm_password"
                     style="@style/TextStyleHint"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPassword"
                     android:layout_marginTop="@dimen/margin_padding24"
                     android:background="@drawable/edittextstaeselector"
                     android:layout_marginBottom="@dimen/margin_padding24"
                     android:paddingStart="@dimen/margin_padding24"
+                    android:paddingEnd="@dimen/margin_padding40"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_padding48" />
 
@@ -208,7 +217,9 @@
                     app:layout_constraintBottom_toBottomOf="@id/etConfirmPass"
                     android:layout_marginEnd="@dimen/margin_padding16"
                     android:layout_width="wrap_content"
-                    android:src="@drawable/ic_baseline_visibility"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_baseline_visibility_off"
                     android:layout_height="wrap_content" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -218,7 +229,9 @@
                     app:layout_constraintBottom_toBottomOf="@id/etConfirmPass"
                     android:layout_marginEnd="@dimen/margin_padding16"
                     android:layout_width="wrap_content"
-                    android:src="@drawable/ic_baseline_visibility_off"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_baseline_visibility"
                     android:visibility="gone"
                     android:layout_height="wrap_content" />
 

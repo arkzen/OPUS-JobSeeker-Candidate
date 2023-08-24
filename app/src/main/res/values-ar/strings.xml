@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OPUS</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="log_in">تسجيل الدخول</string>
+    <string name="hint_qpassword">كلمة المرور</string>
+    <string name="stringmenuEnglish">English</string>
+    <string name="StrinmenuArabic">English</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="change_lang_text">تغيير اللغة</string>
+    <string name="reset_password_toolbartext">إعادة تعيين كلمة المرور</string>
+    <string name="change_password">تغيير كلمة المرور</string>
+    <string name="new_password_hint">كلمة المرور الجديدة</string>
+    <string name="confirm_password_hint">تأكيد كلمة المرور</string>
+    <string name="update_btn">تحديث</string>
+    <string name="notification">Notification</string>
+    <string name="let_s_start_with_n_log_in">دعنا نبدء ب \n تسجيل الدخول!</string>
+    <string name="email">بريد إلكتروني</string>
+    <string name="forgot_password">هل نسيت كلمة السر؟</string>
+    <string name="don_t_have_an_account">ليس لديك حساب؟</string>
+    <string name="create_an_account">إنشاء حساب</string>
+    <string name="looking_for_candidate">تبحث عن مرشح؟</string>
+    <string name="reset_password">إعادة تعيين كلمة المرور</string>
+    <string name="enter_your_email">أدخل بريدك الإلكتروني</string>
+    <string name="enter_your_email_otp_details_text">أدخل بريدك الإلكتروني المتصل بحسابك ، وسنرسل رمز OTP للتحقق.</string>
+    <string name="mobile_no">رقم المحمول</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="add_your_industry">أضف مجالك</string>
+    <string name="select_your_skills">حدد مهاراتك</string>
+    <string name="promote">Promote</string>
+    <string name="promote_yourself_enjoy"><![CDATA[Promote yourself & enjoy!]]></string>
+    <string name="submit_otp">Submit OTP</string>
+    <string name="create_new_password">Create new password</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="your_location">موقعك</string>
+    <string name="gender">جنس</string>
+    <string name="create_account">إنشاء حسابt</string>
+
+</resources>

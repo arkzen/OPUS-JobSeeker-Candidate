@@ -1,6 +1,9 @@
 package bd.ewn.opus.view.ui.fragment.auth
 
 import android.os.Bundle
+import android.text.InputType
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +28,7 @@ class ResetPassFragment : Fragment(),OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentResetPassBinding.inflate(inflater, container, false)
+        binding.cl1.layoutDirection = View.LAYOUT_DIRECTION_LOCALE
         return binding.root
     }
 
@@ -35,6 +39,11 @@ class ResetPassFragment : Fragment(),OnClickListener {
 
     private fun setOnclicklistener() {
         binding.btnSaveChanges.setOnClickListener(this)
+        binding.btnArrwoback.setOnClickListener(this)
+        binding.btnPassHideEye.setOnClickListener(this)
+        binding.btnPassHideCP1.setOnClickListener(this)
+        binding.btnPassHideCP.setOnClickListener(this)
+        binding.btnPassHideEye1.setOnClickListener(this)
     }
 
 
@@ -43,8 +52,6 @@ class ResetPassFragment : Fragment(),OnClickListener {
             R.id.btnSaveChanges -> {
                 val newPass = binding.edNewPass.text.toString()
                 val conPass = binding.edNewPassConfirm.text.toString()
-
-
 
                 if (newPass.isEmpty()) {
                     Toast.makeText(context, "Enter New Password", Toast.LENGTH_LONG).show()
@@ -59,12 +66,62 @@ class ResetPassFragment : Fragment(),OnClickListener {
                     resetPass(newPass)
                 }else Toast.makeText(context, "Password didn't matched", Toast.LENGTH_LONG).show()
 
-
-
+            }
+            R.id.btnPassHideEye->{
+                showpass1()
+            }
+            R.id.btnPassHideEye1 ->{
+                hisepass1()
+            }
+            R.id.btnPassHideCP -> {
+                showpass()
+            }
+            R.id.btnPassHideCP1 -> {
+                hisepass()
+            }
+            R.id.btnArrwoback ->{
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.RPsubmitOTPFragment)
             }
         }
 
 
+    }
+
+    private fun hisepass() {
+        binding.btnPassHideCP.visibility = View.VISIBLE
+        binding.btnPassHideCP1.visibility = View.GONE
+
+         binding.edNewPassConfirm.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+      //  binding.edNewPassConfirm.transformationMethod = PasswordTransformationMethod.getInstance()
+        binding.edNewPassConfirm.text?.let { binding.edNewPassConfirm.setSelection(it.length) }
+    }
+
+    private fun showpass() {
+        binding.btnPassHideCP.visibility = View.GONE
+        binding.btnPassHideCP1.visibility = View.VISIBLE
+
+        binding.edNewPassConfirm.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+      //  binding.edNewPassConfirm.transformationMethod = HideReturnsTransformationMethod.getInstance()
+        binding.edNewPassConfirm.text?.let { binding.edNewPassConfirm.setSelection(it.length) }
+    }
+
+    private fun hisepass1() {
+        binding.btnPassHideEye.visibility = View.VISIBLE
+        binding.btnPassHideEye1.visibility = View.GONE
+
+         binding.edNewPass.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        //binding.edNewPass.transformationMethod = PasswordTransformationMethod.getInstance()
+        binding.edNewPass.text?.let { binding.edNewPass.setSelection(it.length) }
+    }
+
+    private fun showpass1() {
+        binding.btnPassHideEye.visibility = View.GONE
+        binding.btnPassHideEye1.visibility = View.VISIBLE
+
+         binding.edNewPass.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        //binding.edNewPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
+        binding.edNewPass.text?.let { binding.edNewPass.setSelection(it.length) }
     }
 
     private fun resetPass(pass: String) {
