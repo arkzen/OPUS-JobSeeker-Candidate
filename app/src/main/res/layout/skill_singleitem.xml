@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding20"
+        android:layout_marginTop="@dimen/margin_padding10"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbSkill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:button="@null"
+                android:checked="false"
+                android:drawableStart="@drawable/custom_radiobutton"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/outfit_regular"
+                android:gravity="center"
+                style="@style/RadioButtonNoBackground"
+                android:textColor="@color/shark"
+                android:textSize="@dimen/font16" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/skillstars"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:id="@+id/star1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding10"
+                android:layout_marginTop="@dimen/margin_padding5"
+                android:layout_marginEnd="@dimen/margin_padding10"
+                android:layout_marginBottom="@dimen/margin_padding5"
+                android:background="@drawable/lauout_bg_white"
+                android:elevation="3dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
+
+                <ImageView
+                    android:id="@+id/grystar1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/grystar" />
+
+                <ImageView
+                    android:id="@+id/ylwstar1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ylwstar"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/star2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding10"
+                android:layout_marginTop="@dimen/margin_padding5"
+                android:layout_marginEnd="@dimen/margin_padding10"
+                android:layout_marginBottom="@dimen/margin_padding5"
+                android:background="@drawable/lauout_bg_white"
+                android:elevation="3dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
+
+                <ImageView
+                    android:id="@+id/grystar2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/grystar" />
+
+                <ImageView
+                    android:id="@+id/ylwstar2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ylwstar"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/star3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding10"
+                android:layout_marginTop="@dimen/margin_padding5"
+                android:layout_marginEnd="@dimen/margin_padding10"
+                android:layout_marginBottom="@dimen/margin_padding5"
+                android:background="@drawable/lauout_bg_white"
+                android:elevation="3dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
+
+                <ImageView
+                    android:id="@+id/grystar3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/grystar" />
+
+                <ImageView
+                    android:id="@+id/ylwstar3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ylwstar"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/star4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding10"
+                android:layout_marginTop="@dimen/margin_padding5"
+                android:layout_marginEnd="@dimen/margin_padding10"
+                android:layout_marginBottom="@dimen/margin_padding5"
+                android:background="@drawable/lauout_bg_white"
+                android:elevation="3dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
+
+                <ImageView
+                    android:id="@+id/grystar4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/grystar" />
+
+                <ImageView
+                    android:id="@+id/ylwstar4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ylwstar"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/star5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding10"
+                android:layout_marginTop="@dimen/margin_padding5"
+                android:layout_marginEnd="@dimen/margin_padding10"
+                android:layout_marginBottom="@dimen/margin_padding5"
+                android:background="@drawable/lauout_bg_white"
+                android:elevation="3dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
+
+                <ImageView
+                    android:id="@+id/grystar5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/grystar" />
+
+                <ImageView
+                    android:id="@+id/ylwstar5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ylwstar"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

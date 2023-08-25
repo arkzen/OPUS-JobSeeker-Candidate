@@ -5,13 +5,26 @@
     <dimen name="font12">12sp</dimen>
     <dimen name="font14">14sp</dimen>
     <dimen name="font16">16sp</dimen>
+    <dimen name="font20">20sp</dimen>
 
     <!-- Dimensions for margins and paddings -->
     <dimen name="margin_padding5">5dp</dimen>
+    <dimen name="margin_padding0">0dp</dimen>
+    <dimen name="margin_padding2">2dp</dimen>
+    <dimen name="margin_padding4">4dp</dimen>
+    <dimen name="margin_padding8">8dp</dimen>
     <dimen name="margin_padding10">10dp</dimen>
+    <dimen name="margin_padding12">12dp</dimen>
     <dimen name="margin_padding16">16dp</dimen>
     <dimen name="margin_padding20">20dp</dimen>
     <dimen name="margin_padding24">24dp</dimen>
     <dimen name="margin_padding30">30dp</dimen>
+    <dimen name="margin_padding32">32dp</dimen>
+    <dimen name="margin_padding35">35dp</dimen>
+    <dimen name="margin_padding40">40dp</dimen>
+    <dimen name="margin_padding48">48dp</dimen>
+    <dimen name="margin_padding60">60dp</dimen>
+
+
 
 </resources>

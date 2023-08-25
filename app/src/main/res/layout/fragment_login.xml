@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        android:padding="@dimen/margin_padding20"
+        tools:context=".view.ui.fragment.auth.LoginFragment">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvAppLang"
+            android:layout_width="60dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="@dimen/margin_padding20"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/fi_globe" />
+
+                <ImageView
+                    android:id="@+id/btnImgLangMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:src="@drawable/dropdownarrow1" />
+
+                <!--            <androidx.appcompat.widget.AppCompatSpinner-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_marginLeft="3dp"-->
+                <!--                android:entries="@array/language"-->
+                <!--                android:background="@drawable/dropdownarrow1"-->
+                <!--                android:layout_height="wrap_content"/>-->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvLangSelect"
+            android:layout_width="174dp"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:visibility="gone"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toTopOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/margin_padding20"
+                android:paddingTop="@dimen/margin_padding20"
+                android:paddingBottom="@dimen/margin_padding20">
+
+                <FrameLayout
+                    android:id="@+id/btnArrowSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnEnglish"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/frame_4"
+
+                        />
+
+                </FrameLayout>
+
+
+                <TextView
+                    android:id="@+id/btnEnglish"
+                    style="@style/TextStyleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_padding20"
+                    android:text="English"
+                    android:textColor="@color/green"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btnImgCheckEn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/fi_check"
+                    app:layout_constraintBottom_toBottomOf="@id/btnEnglish"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    app:layout_constraintTop_toTopOf="@id/btnEnglish" />
+
+                <ImageView
+                    android:id="@+id/btnImgCheckAr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/fi_check"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@id/btnArabic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/btnArabic" />
+
+                <TextView
+                    android:id="@+id/btnArabic"
+                    style="@style/TextStyleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_padding10"
+                    android:layout_marginEnd="@dimen/margin_padding20"
+                    android:text="العربية"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnEnglish" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvLoginView1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:cardCornerRadius="@dimen/margin_padding16"
+            app:layout_constraintBottom_toTopOf="@id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/margin_padding20"
+                android:paddingEnd="@dimen/margin_padding20">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvAppLogo"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="@dimen/margin_padding30"
+                    app:cardBackgroundColor="@color/blue"
+                    app:cardCornerRadius="@dimen/margin_padding10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/Image_App_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/opuslogowhitedrop" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tvHeadingText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_padding16"
+                    android:fontFamily="@font/outfit_bold"
+                    android:gravity="center"
+                    android:text="@string/let_s_start_with_n_log_in"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/font20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cvAppLogo" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edEmail"
+                    style="@style/TextStyleHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_padding48"
+                    android:layout_marginTop="@dimen/margin_padding24"
+                    android:background="@drawable/edittextstaeselector"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="@dimen/margin_padding24"
+                    android:paddingEnd="@dimen/margin_padding24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvHeadingText" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edPassword"
+                    style="@style/TextStyleHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_padding48"
+                    android:layout_marginTop="@dimen/margin_padding24"
+                    android:background="@drawable/edittextstaeselector"
+                    android:hint="@string/hint_qpassword"
+                    android:inputType="textPassword"
+
+                    android:paddingStart="@dimen/margin_padding24"
+                    android:paddingEnd="@dimen/margin_padding40"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edEmail" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnPassHideEye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_padding16"
+                    android:clickable="true"
+                    android:contentDescription="tod"
+                    android:focusable="true"
+                    android:src="@drawable/ic_baseline_visibility_off"
+                    app:layout_constraintBottom_toBottomOf="@id/edPassword"
+                    app:layout_constraintEnd_toEndOf="@id/edPassword"
+                    app:layout_constraintTop_toTopOf="@id/edPassword" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnPassHideEye1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_padding16"
+                    android:clickable="true"
+                    android:contentDescription="todo"
+                    android:focusable="true"
+                    android:src="@drawable/ic_baseline_visibility"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/edPassword"
+                    app:layout_constraintEnd_toEndOf="@id/edPassword"
+                    app:layout_constraintTop_toTopOf="@id/edPassword" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnLogin"
+                    android:layout_width="248dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="@dimen/margin_padding30"
+                    android:background="@drawable/btn_shape_login"
+                    android:backgroundTint="@color/blue"
+                    android:text="@string/log_in"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edPassword" />
+
+                <TextView
+                    android:id="@+id/tvBtnForgetPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_padding16"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/forgot_password"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font14"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnLogin">
+
+                </TextView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvDontHaveAccount"
+            style="@style/TextStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding40"
+            android:text="@string/don_t_have_an_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline1">
+
+        </TextView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnCreateAccount"
+            android:layout_width="254dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:foregroundGravity="center"
+            app:cardBackgroundColor="@color/whiteshade1"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/tvDontHaveAccount">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvCreateAccount"
+                    style="@style/TextStyleMedium14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/create_an_account"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnLookingForCandidate"
+            android:layout_width="254dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/margin_padding12"
+            android:clickable="true"
+            android:textAllCaps="false"
+            app:cardBackgroundColor="@color/greenshade1"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCreateAccount">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvLookingForCandidate"
+                    style="@style/TextStyleMedium14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/looking_for_candidate"
+                    android:textAlignment="center"
+                    android:textColor="@color/green" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.14" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".75" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
